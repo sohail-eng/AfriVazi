@@ -28,7 +28,7 @@ const Navbar = () => {
             <Link className="link" to="/product/2">King</Link>
           </div>
           <div className="item">
-            <Link className="link" to="/product/3">Kids</Link>
+            <Link className="link" to="/product/3">Toto</Link>
           </div>
         </div>
         <div className="center">
