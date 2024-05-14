@@ -1,5 +1,13 @@
 import React from "react";
 import Card from "../Card/Card";
+import accessories04 from "./../../assets/image/accessories04.jpg";
+import queen11 from "./../../assets/image/queen11.jpg";
+import queen09 from "./../../assets/image/queen09.jpg";
+import queen10 from "./../../assets/image/queen10.jpg";
+import king02 from "./../../assets/image/king02.jpg";
+import king04 from "./../../assets/image/king04.jpg";
+import kids05 from "./../../assets/image/kids05.jpg";
+import kids06 from "./../../assets/image/kids06.jpg";
 
 const List = () => {
   const Data = [
@@ -42,7 +50,7 @@ const List = () => {
   ];
   return (
     <div className="list">
-      {data?.map(item=>(
+      {Data?.map((item) => (
         <Card item={item} key={item.id} />
       ))}
     </div>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import "./Products.scss";
 import all08 from "./../../assets/image/all08.jpg";
 import List from "../../components/List/List";
