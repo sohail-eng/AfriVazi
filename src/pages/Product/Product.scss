@@ -30,5 +30,81 @@
   }
   .right {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    .price {
+      font-size: 30px;
+      font-weight: 500;
+      color: #2879fe;
+    }
+
+    p {
+      font-size: 17px;
+      font-weight: 300;
+      text-align: justify;
+    }
+
+    .quantity {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      button {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border: none;
+      }
+    }
+
+    .add {
+      width: 250px;
+      padding: 10px;
+      background-color: #2879fe;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      cursor: pointer;
+      border: none;
+      font-weight: 500;
+    }
+
+    .links {
+      display: flex;
+      gap: 20px;
+
+      .item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #2879fe;
+        font-size: 14px;
+      }
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      color: gray;
+      font-size: 14px;
+      margin-top: 30px;
+
+      hr {
+        width: 200px;
+        border: 1px olid rgb(238, 237, 237);
+      }
+    }
+
+    hr {
+      border: 1px olid rgb(238, 237, 237);
+    }
   }
 }
