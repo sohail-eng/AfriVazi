@@ -1,4 +1,5 @@
 import React from "react";
+import './List.scss';
 import Card from "../Card/Card";
 import accessories04 from "./../../assets/image/accessories04.jpg";
 import queen11 from "./../../assets/image/queen11.jpg";
