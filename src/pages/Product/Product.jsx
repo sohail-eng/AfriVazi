@@ -20,7 +20,7 @@ const Product = () => {
           <img src={Images[1]} alt="" onClick={(e) => setSelectedImg(1)} />
         </div>
         <div className="mainImg">
-          <img src={Images[setSelectedImg]} alt="" />
+          <img src={Images[selectedImg]} alt="" />
         </div>
       </div>
       <div className="right">
