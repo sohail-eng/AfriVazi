@@ -30,27 +30,22 @@ const Slider = () => {
   ];
 
   const prevSlide = () => {
-    setCurrentSlide(currentSlide === 0 ? 8 : (prev) => prev - 1);
+    setCurrentSlide((prev) => (prev === 0 ? Data.length - 1 : prev - 1));
   };
+
   const nextSlide = () => {
-    setCurrentSlide(currentSlide === 8 ? 0 : (prev) => prev + 1);
+    setCurrentSlide((prev) => (prev === Data.length - 1 ? 0 : prev + 1));
   };
 
   return (
     <div className="slider">
       <div
         className="container"
-        style={{ transform: `translateX(-${currentSlide * 100}vw)` }}
+        style={{ transform: `translateX(-${currentSlide * 100}%)` }}
       >
-        <img src={Data[0]} alt="" />
-        <img src={Data[1]} alt="" />
-        <img src={Data[2]} alt="" />
-        <img src={Data[3]} alt="" />
-        <img src={Data[4]} alt="" />
-        <img src={Data[5]} alt="" />
-        <img src={Data[6]} alt="" />
-        <img src={Data[7]} alt="" />
-        <img src={Data[8]} alt="" />
+        {Data.map((image, index) => (
+          <img src={image} alt={`Slide ${index}`} key={index} />
+        ))}
       </div>
       <div className="icons">
         <div className="icon" onClick={prevSlide}>
