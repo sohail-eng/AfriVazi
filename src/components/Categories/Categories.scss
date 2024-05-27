@@ -26,17 +26,27 @@
       position: absolute;
       width: fit-content;
       height: 25px;
-      padding: 5px;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      margin: auto;
+      padding: 2px;
+      bottom: 10px; /* Align to bottom */
+      right: 10px; /* Align to right */
       cursor: pointer;
       border: none;
       background-color: white;
       text-transform: uppercase;
       font-weight: 500;
+    }
+
+    .link {
+      color: teal;
+
+      &:hover {
+        color: #05c5c5;
+        text-decoration: underline;
+      }
+
+      &:active {
+        color: #012029;
+      }
     }
 
     img {
