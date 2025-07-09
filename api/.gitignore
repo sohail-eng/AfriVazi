@@ -1,0 +1,28 @@
+# Node modules
+node_modules/
+
+# Build output
+build/
+
+# Local environment variables
+.env
+.env.*
+
+# Database (if using SQLite or local DB files)
+*.db
+
+# Strapi public uploads (user-generated content)
+public/uploads/
+
+# Log files
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# npm lock file (optional, if using yarn or pnpm instead)
+package-lock.json
+
+# Strapi admin build (if built locally)
+admin/build/ 
