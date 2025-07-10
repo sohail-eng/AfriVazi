@@ -1,28 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./FeaturedProducts.scss";
 import Card from "../Card/Card";
-import axios from "axios";
+import useFetch from "../../hooks/useFetch";
 
 const FeaturedProducts = ({type}) => {
-  const [data, setData] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(import.meta.env.VITE_API_URL + `/products?populate=*&[filters][type][$eq]=${type}`, {
-          headers: {
-            Authorization: "bearer " + import.meta.env.VITE_API_TOKEN,
-          }
-        });
-
-        setData(res.data.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchData();
-  }, []);
-
+  const {data, loading, error} = useFetch(`/products?populate=*&[filters][type][$eq]=${type}`)
+  
   return (
     <div className="featuredProducts">
       <div className="top">
@@ -38,7 +22,7 @@ const FeaturedProducts = ({type}) => {
         </p>
       </div>
       <div className="bottom">
-        {data.length === 0 ? (
+        {error? "Something went wrong!" : loading? "loading" : data.length === 0 ? (
           <p>No products found.</p>
         ) : (
           data.map((item) => (
