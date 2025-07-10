@@ -3,20 +3,13 @@ import "./Card.scss";
 import { Link } from "react-router-dom";
 
 const Card = ({ item }) => {
-  const imgUrl = item?.img?.url
-    ? import.meta.env.VITE_UPLOAD_URL + item.img.url
-    : "";
-  const img2Url = item?.img2?.url
-    ? import.meta.env.VITE_UPLOAD_URL + item.img2.url
-    : "";
-
   return (
     <Link className="link" to={`/product/${item.id}`} >
       <div className="card">
         <div className="image">
           {item?.isNew && <span>New Season</span>}
-          {imgUrl && <img src={imgUrl} alt="" className="mainImg" />}
-          {img2Url && <img src={img2Url} alt="" className="secondImg" />}
+          {item?.img?.url && <img src={import.meta.env.VITE_UPLOAD_URL + item.img.url} alt="" className="mainImg" />}
+          {item?.img2?.url && <img src={import.meta.env.VITE_UPLOAD_URL + item.img2.url} alt="" className="secondImg" />}
         </div>
         <h2>{item?.title}</h2>
         <div className="prices">
