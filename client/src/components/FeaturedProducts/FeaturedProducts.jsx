@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./FeaturedProducts.scss";
 import accessories04 from "./../../assets/image/accessories04.jpg";
 import queen11 from "./../../assets/image/queen11.jpg";
@@ -9,6 +9,7 @@ import king04 from "./../../assets/image/king04.jpg";
 import kids05 from "./../../assets/image/kids05.jpg";
 import kids06 from "./../../assets/image/kids06.jpg";
 import Card from "../Card/Card";
+import axios from "axios";
 
 const FeaturedProducts = ({type}) => {
   const Data = [
@@ -49,6 +50,24 @@ const FeaturedProducts = ({type}) => {
       price: 33,
     },
   ];
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await axios.get(import.meta.env.VITE_API_URL + "/products", {
+          headers: {
+            Authorization: "bearer " + import.meta.env.VITE_API_TOKEN,
+          }
+        });
+        console.log(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <div className="featuredProducts">
