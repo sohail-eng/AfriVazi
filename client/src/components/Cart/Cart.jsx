@@ -18,6 +18,24 @@ const Cart = () => {
     return total.toFixed(2);
   };
 
+  const stripePromise = loadStripe('pk_test_51RjmFTRUWM5BH355Rw1ZGWcHJuO0YZemGmPukLoT0JxAL48ZePugEh9EjLiQpXlew4UgO8posrRd7DBbQHhbwxKw00qYxvopr7');
+
+  const handlePayment = async () => {
+    try {
+      const stripe =await stripePromise;
+
+      const res = await makeRequest.post ("/orders", {
+        products,
+      });
+      await stripe.redirectToCheckout({
+        sessionId: res.data.stripeSession.id,
+      });
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   
   return (
     <div className="cart">
@@ -37,7 +55,7 @@ const Cart = () => {
         <span>SUBTOTAL</span>
         <span>${totalPrice()}</span>
       </div>
-      <button>PROCEED TO CHECKOUT</button>
+      <button onClick={handlePayment}>PROCEED TO CHECKOUT</button>
       <span className="reset" onClick={() => dispatch(resetCart())} >Reset Cart</span>
     </div>
   );
