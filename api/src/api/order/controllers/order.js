@@ -7,11 +7,29 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
   async create(ctx) {
     const { products } = ctx.request.body;
 
+    // Debug: Log all products in the database
+    const allProducts = await strapi
+      .service("api::product.product")
+      .find({ publicationState: "preview" });
+    console.log(
+      "All products in DB:",
+      allProducts.results.map((p) => ({ id: p.id, title: p.title }))
+    );
+
     const lineItems = await Promise.all(
       products.map(async (product) => {
-        const item = await strapi
+        console.log("Looking for product id:", product.id, typeof product.id);
+        const productResult = await strapi
           .service("api::product.product")
-          .findOne(product.id);
+          .find({
+            filters: { id: product.id },
+            publicationState: "preview",
+          });
+        const item = productResult.results[0];
+
+        if (!item) {
+          throw new Error(`Product with id ${product.id} not found`);
+        }
 
         return {
           price_data: {
@@ -45,8 +63,9 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
         },
       });
 
-      return {stripeSession: session};
+      return { stripeSession: session };
     } catch (error) {
+      console.error(error); // Log the error for debugging
       ctx.response.status = 500;
       ctx.body = { error: error.message };
     }

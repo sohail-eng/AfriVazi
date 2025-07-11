@@ -27,7 +27,7 @@ const Cart = () => {
       const stripe =await stripePromise;
 
       const res = await makeRequest.post ("/orders", {
-        products,
+        products: products.map(p => ({ id: p.id, quantity: p.quantity })),
       });
       await stripe.redirectToCheckout({
         sessionId: res.data.stripeSession.id,
