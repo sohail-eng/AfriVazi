@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
 import "./Products.scss";
 import all08 from "./../../assets/image/all08.jpg";
 import List from "../../components/List/List";
 import useFetch from "../../hooks/useFetch";
 
 const Products = () => {
-  const categoryId = parseInt(useParams().id);
   const [maxPrice, setMaxPrice] = useState(1000);
-  const [sort, setSort] = useState(null);
+  const [sort, setSort] = useState("asc");
   const [selectedSubcategories, setSelectedSubcategories] = useState([]);
 
   const { data, loading, error } = useFetch(`/sub-categories?populate=*`);
@@ -75,7 +73,7 @@ const Products = () => {
       </div>
       <div className="right">
         <img className="categoryImage" src={all08} alt="" />
-        <List categoryId={categoryId} maxPrice={maxPrice} sort={sort} subCategories={selectedSubcategories} />
+        <List subCategories={selectedSubcategories} maxPrice={maxPrice} sort={sort} />
       </div>
     </div>
   );
