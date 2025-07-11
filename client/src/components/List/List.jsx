@@ -10,11 +10,6 @@ const List = ({ subCategories = [], maxPrice, sort = "asc" }) => {
       (item) => `&[filters][sub_categories][id][$eq]=${item}`
     )}&[filters][price][$lte]=${maxPrice}&sort=price:${sort}`
   );
-  
-  console.log("List data:", data);
-  console.log("Loading:", loading);
-  console.log("Error:", error);
-  console.log("Data length:", data?.length);
 
   return (
     <div className="list">
