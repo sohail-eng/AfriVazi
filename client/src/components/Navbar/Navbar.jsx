@@ -8,8 +8,11 @@ import Flag from "./../../assets/image/Kenya-Flag-icon.png";
 import { Link } from "react-router-dom";
 import "./Navbar.scss";
 import Cart from "../Cart/Cart";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  const products = useSelector(state => state.cart.products);
+
   const [open, setOpen] = useState(false);
 
   return (
@@ -72,7 +75,7 @@ const Navbar = () => {
             <FavoriteBorderOutlinedIcon />
             <div className="cartIcon" onClick={() => setOpen(!open)}>
               <ShoppingCartOutlinedIcon />
-              <span>0</span>
+              <span>{products.length}</span>
             </div>
           </div>
         </div>

@@ -1,52 +1,44 @@
 import React from "react";
 import "./Cart.scss";
-import queen09 from "./../../assets/image/queen09.jpg";
-import queen10 from "./../../assets/image/queen10.jpg";
-import king04 from "./../../assets/image/king04.jpg";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { removeItem, resetCart } from "../../redux/cartReducer";
 
 const Cart = () => {
-  const Data = [
-    {
-      id: 1,
-      img: queen09,
-      img2: queen10,
-      title: "Queen's Yellow Ankara Dress",
-      desc: "Queen's Yellow Ankara Dress",
-      isNew: true,
-      oldPrice: 40,
-      price: 35,
-    },
-    {
-      id: 2,
-      img: king04,
-      title: "King's Kaftan Black and White",
-      desc: "King's Kaftan Black and White",
-      isNew: true,
-      oldPrice: 42,
-      price: 37,
-    },
-  ];
+  const products = useSelector(state => state.cart.products);
+
+  const dispatch = useDispatch();
+
+  const totalPrice = () => {
+    let total = 0;
+    products.forEach((item) => {
+      total += item.price * item.quantity;
+    });
+    return total.toFixed(2);
+  };
+
+  
   return (
     <div className="cart">
       <h1>Items in your cart</h1>
-      {Data?.map((item) => (
+      {products?.map((item) => (
         <div className="item" key={item.id}>
-          <img src={item.img} alt="" />
+          <img src={import.meta.env.VITE_UPLOAD_URL + item.img} alt="" />
           <div className="details">
             <h1>{item.title}</h1>
             <p>{item.desc?.substring(0, 100)}</p>
-            <div className="price">1 x ${item.price}</div>
+            <div className="price">{item.quantity} x ${item.price}</div>
           </div>
-          <DeleteOutlinedIcon className="delete" />
+          <DeleteOutlinedIcon className="delete" onClick={() => dispatch(removeItem(item.id))} />
         </div>
       ))}
       <div className="total">
         <span>SUBTOTAL</span>
-        <span>$123</span>
+        <span>${totalPrice()}</span>
       </div>
       <button>PROCEED TO CHECKOUT</button>
-      <span className="reset">Reset Cart</span>
+      <span className="reset" onClick={() => dispatch(resetCart())} >Reset Cart</span>
     </div>
   );
 };
