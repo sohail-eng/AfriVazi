@@ -25,4 +25,8 @@ Thumbs.db
 package-lock.json
 
 # Strapi admin build (if built locally)
-admin/build/ 
+admin/build/
+
+# Export files (too large for GitHub)
+export_*.tar.gz.enc
+*.tar.gz.enc 
