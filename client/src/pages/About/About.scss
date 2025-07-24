@@ -1,0 +1,151 @@
+@import "../../variables";
+
+.about {
+  padding: $spacing-xxl 0;
+  min-height: calc(100vh - 200px);
+  background-color: $lightBg;
+
+  .about-content {
+    background: $white;
+    border-radius: $borderRadius-md;
+    box-shadow: $boxShadow-sm;
+    padding: $spacing-xxl;
+    margin-top: $spacing-lg;
+
+    h1 {
+      font-size: 2.5rem;
+      color: $mainColor;
+      margin-bottom: $spacing-xl;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      padding-bottom: $spacing-sm;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background-color: $mainColor;
+      }
+    }
+
+    .about-image {
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+      border-radius: $borderRadius-md;
+      margin: $spacing-xxl 0;
+      box-shadow: $boxShadow-md;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      &:hover img {
+        transform: scale(1.02);
+      }
+    }
+
+    .about-text {
+      max-width: 800px;
+      margin: 0 auto;
+
+      h2 {
+        color: $mainColor;
+        margin: $spacing-xl 0 $spacing-md;
+        font-size: 1.8rem;
+        position: relative;
+        padding-bottom: $spacing-sm;
+
+        &::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 50px;
+          height: 3px;
+          background-color: $mainColor;
+        }
+      }
+
+      p {
+        color: $textColor;
+        line-height: 1.8;
+        margin-bottom: $spacing-lg;
+        font-size: 1.1rem;
+      }
+
+      .value-list {
+        list-style: none;
+        padding: 0;
+        margin: $spacing-xl 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: $spacing-md;
+
+        li {
+          padding: $spacing-sm $spacing-md $spacing-sm $spacing-lg;
+          position: relative;
+          color: $textColor;
+          background-color: rgba($mainColor, 0.05);
+          border-radius: $borderRadius-sm;
+          transition: all 0.3s ease;
+
+          &::before {
+            content: '•';
+            color: $mainColor;
+            font-weight: bold;
+            position: absolute;
+            left: $spacing-sm;
+          }
+
+          &:hover {
+            transform: translateY(-2px);
+            box-shadow: $boxShadow-sm;
+            background-color: rgba($mainColor, 0.1);
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-lg 0;
+
+    .about-content {
+      padding: $spacing-lg;
+
+      h1 {
+        font-size: 2rem;
+        margin-bottom: $spacing-lg;
+      }
+
+      .about-image {
+        height: 250px;
+        margin: $spacing-lg 0;
+      }
+
+      .about-text {
+        h2 {
+          font-size: 1.5rem;
+        }
+
+        p {
+          font-size: 1rem;
+        }
+
+        .value-list {
+          grid-template-columns: 1fr;
+        }
+      }
+    }
+  }
+}
