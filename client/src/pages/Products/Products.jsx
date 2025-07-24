@@ -1,18 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import "./Products.scss";
 import all08 from "./../../assets/image/all08.jpg";
 import List from "../../components/List/List";
 import useFetch from "../../hooks/useFetch";
 
 const Products = () => {
+  const { id } = useParams();
   const [maxPrice, setMaxPrice] = useState(1000);
   const [sort, setSort] = useState("asc");
   const [selectedSubcategories, setSelectedSubcategories] = useState([]);
+  const [categoryFilter, setCategoryFilter] = useState("");
 
-  const { data, loading, error } = useFetch(`/sub-categories?populate=*`);
+  // Map category names from URL to category titles in the database
+  useEffect(() => {
+    if (id) {
+      const categoryMap = {
+        'queen': 'Queen',
+        'king': 'King',
+        'toto': 'Toto'
+      };
+      setCategoryFilter(categoryMap[id.toLowerCase()] || "");
+    }
+  }, [id]);
+
+  const { data: subCategories, loading: subCategoriesLoading, error: subCategoriesError } = useFetch(`/sub-categories?populate=*`);
 
   const handleChange = (e) => {
-
     const value = e.target.value;
     const isChecked = e.target.checked;
     setSelectedSubcategories(
@@ -27,7 +41,7 @@ const Products = () => {
       <div className="left">
         <div className="filterItem">
           <h2>Product Categories</h2>
-          {error? "Something went wrong!" : loading? "loading" : data?.map((item) => (
+          {subCategoriesError ? "Something went wrong!" : subCategoriesLoading ? "loading" : subCategories?.map((item) => (
             <div className="inputItem" key={item.id}>
               <input type="checkbox" id={item.id} value={item.id} onChange={handleChange} />
               <label htmlFor={item.id}>{item?.title}</label>
@@ -73,7 +87,12 @@ const Products = () => {
       </div>
       <div className="right">
         <img className="categoryImage" src={all08} alt="" />
-        <List subCategories={selectedSubcategories} maxPrice={maxPrice} sort={sort} />
+        <List 
+          subCategories={selectedSubcategories} 
+          category={categoryFilter}
+          maxPrice={maxPrice} 
+          sort={sort} 
+        />
       </div>
     </div>
   );
