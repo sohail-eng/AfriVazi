@@ -32,12 +32,12 @@ const Product = () => {
           <div className="left">
             <div className="images">
               <img
-                src={import.meta.env.VITE_UPLOAD_URL + data[0]?.img?.url}
+                src={data[0]?.img?.url?.startsWith('http') ? data[0]?.img?.url : import.meta.env.VITE_UPLOAD_URL + data[0]?.img?.url}
                 alt=""
                 onClick={() => setSelectedImg("img")}
               />
               <img
-                src={import.meta.env.VITE_UPLOAD_URL + data[0]?.img2?.url}
+                src={data[0]?.img2?.url?.startsWith('http') ? data[0]?.img2?.url : import.meta.env.VITE_UPLOAD_URL + data[0]?.img2?.url}
                 alt=""
                 onClick={() => setSelectedImg("img2")}
               />
@@ -45,7 +45,7 @@ const Product = () => {
             <div className="mainImg">
               <img
                 src={
-                  import.meta.env.VITE_UPLOAD_URL + data[0]?.[selectedImg]?.url
+                  data[0]?.[selectedImg]?.url?.startsWith('http') ? data[0]?.[selectedImg]?.url : import.meta.env.VITE_UPLOAD_URL + data[0]?.[selectedImg]?.url
                 }
                 alt=""
               />

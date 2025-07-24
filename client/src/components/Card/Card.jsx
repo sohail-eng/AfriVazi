@@ -8,8 +8,8 @@ const Card = ({ item }) => {
       <div className="card">
         <div className="image">
           {item?.isNew && <span>New Season</span>}
-          {item?.img?.url && <img src={import.meta.env.VITE_UPLOAD_URL + item.img.url} alt="" className="mainImg" />}
-          {item?.img2?.url && <img src={import.meta.env.VITE_UPLOAD_URL + item.img2.url} alt="" className="secondImg" />}
+          {item?.img?.url && <img src={item.img.url.startsWith('http') ? item.img.url : import.meta.env.VITE_UPLOAD_URL + item.img.url} alt="" className="mainImg" />}
+          {item?.img2?.url && <img src={item.img2.url.startsWith('http') ? item.img2.url : import.meta.env.VITE_UPLOAD_URL + item.img2.url} alt="" className="secondImg" />}
         </div>
         <h2>{item?.title}</h2>
         <div className="prices">
