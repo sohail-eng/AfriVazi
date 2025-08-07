@@ -21,10 +21,98 @@ AfriVazi is a full-stack e-commerce platform for authentic African wear, built w
 
 ```
 AfriVazi/
-  api/      # Strapi backend (Node.js, REST API, admin panel)
-  client/   # React frontend (TypeScript, Vite, Redux, Stripe)
-  README.md # Project overview (this file)
+│
+├── api/                           # Strapi Backend
+│   ├── config/                   # Server configuration
+│   │   ├── admin.js             # Admin panel config
+│   │   ├── api.js               # API settings
+│   │   ├── database.js          # Database configuration
+│   │   └── middlewares.js       # Custom middlewares
+│   │
+│   ├── src/
+│   │   ├── admin/               # Admin panel customization
+│   │   ├── api/                 # API components
+│   │   │   ├── category/        # Category model/controller/routes
+│   │   │   ├── order/           # Order processing
+│   │   │   ├── product/         # Product management
+│   │   │   └── sub-category/    # Sub-category management
+│   │   ├── extensions/          # Strapi extensions
+│   │   └── index.js             # App entry point
+│   │
+│   ├── .env                     # Environment variables
+│   ├── package.json             # Backend dependencies
+│   └── README.md                # API documentation
+│
+├── client/                      # React Frontend
+│   ├── public/                  # Static assets
+│   │   └── images/              # Image assets
+│   │
+│   ├── src/
+│   │   ├── assets/              # Static assets
+│   │   │   └── image/           # Image assets
+│   │   │
+│   │   ├── components/          # Reusable UI components
+│   │   │   ├── Card/           # Product card component
+│   │   │   ├── Cart/           # Shopping cart components
+│   │   │   ├── Categories/     # Category navigation
+│   │   │   ├── Contact/        # Contact form
+│   │   │   ├── FeaturedProducts/ # Featured products section
+│   │   │   ├── Footer/         # Site footer
+│   │   │   ├── List/           # Product listing
+│   │   │   ├── Navbar/         # Navigation bar
+│   │   │   └── Slider/         # Image carousel
+│   │   │
+│   │   ├── hooks/              # Custom React hooks
+│   │   │
+│   │   ├── pages/              # Application pages
+│   │   │   ├── About/         # About page
+│   │   │   ├── Contact/       # Contact page
+│   │   │   ├── Home/          # Home page
+│   │   │   ├── Product/       # Single product view
+│   │   │   └── Products/      # Product listing page
+│   │   │
+│   │   ├── redux/             # State management
+│   │   │   ├── cartSlice.js   # Shopping cart state
+│   │   │   └── store.js       # Redux store
+│   │   │
+│   │   ├── App.jsx            # Main App component
+│   │   ├── main.jsx           # Application entry point
+│   │   └── index.css          # Global styles
+│   │
+│   ├── .env                   # Frontend environment variables
+│   ├── package.json           # Frontend dependencies
+│   ├── tailwind.config.js     # Tailwind CSS config
+│   └── vite.config.ts         # Vite configuration
+│
+├── .gitignore                 # Git ignore file
+└── README.md                  # Project documentation (this file)
 ```
+
+## 🛠️ Technologies Used
+
+### Frontend
+- **React 18** - Frontend library
+- **TypeScript** - Type checking
+- **Vite** - Build tool and dev server
+- **Redux Toolkit** - State management
+- **React Router** - Client-side routing
+- **Material-UI (MUI)** - UI component library
+- **Tailwind CSS** - Utility-first CSS framework
+- **Stripe.js** - Payment processing
+- **Axios** - HTTP client
+
+### Backend
+- **Strapi 5** - Headless CMS
+- **Node.js** - JavaScript runtime
+- **PostgreSQL** - Primary database
+- **MySQL** - Alternative database option
+- **Stripe** - Payment processing
+- **JWT** - Authentication
+
+### Development Tools
+- **ESLint** - Code linting
+- **PostCSS** - CSS processing
+- **Git** - Version control
 
 ---
 
