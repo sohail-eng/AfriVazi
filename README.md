@@ -237,7 +237,7 @@ VITE_UPLOAD_URL=https://your-api-url.com
 
 ## 📝 License
 
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](https://opensource.org/license/mit).
 
 ---
 
