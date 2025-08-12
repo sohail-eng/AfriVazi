@@ -1,8 +1,13 @@
 .categories {
   display: flex;
-  height: 80vh;
+  height: 30vh; // Default height for mobile
   gap: 10px;
   margin: 10px;
+  
+  // For larger screens
+  @media (min-width: 768px) {
+    height: 70vh; // Original height for larger screens
+  }
 
   .col {
     display: flex;
@@ -25,15 +30,26 @@
     button {
       position: absolute;
       width: fit-content;
-      height: 25px;
-      padding: 2px;
-      bottom: 10px; /* Align to bottom */
-      right: 10px; /* Align to right */
+      height: 20px;
+      padding: 1px 4px;
+      bottom: 8px;
+      right: 8px;
       cursor: pointer;
       border: none;
       background-color: white;
       text-transform: uppercase;
+      font-size: 10px;
       font-weight: 500;
+      line-height: 1;
+      border-radius: 4px;
+      
+      @media (min-width: 768px) {
+        height: 25px;
+        padding: 2px;
+        bottom: 10px;
+        right: 10px;
+        font-size: inherit;
+      }
     }
 
     .link {

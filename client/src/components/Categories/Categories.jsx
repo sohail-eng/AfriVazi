@@ -17,13 +17,13 @@ const Categories = () => {
         <div className="row">
           <img src={accessories10} alt="" />
           <button>
-            <Link to={"/product/1"} className="link">Sale</Link>
+            <Link to={"/products/sale"} className="link">Sale</Link>
           </button>
         </div>
         <div className="row">
           <img src={kids01} alt="" />
           <button>
-            <Link to={"/product/1"} className="link">Toto</Link>
+            <Link to={"/products/toto"} className="link">Toto</Link>
           </button>
         </div>
       </div>
@@ -31,7 +31,7 @@ const Categories = () => {
         <div className="row">
           <img src={queen02} alt="" />
           <button>
-            <Link to={"/product/1"} className="link">Accessories</Link>
+            <Link to={"/products/accessories"} className="link">Accessories</Link>
           </button>
         </div>
       </div>
@@ -41,7 +41,7 @@ const Categories = () => {
             <div className="row">
               <img src={king08} alt="" />
               <button>
-                <Link to={"/product/1"} className="link">King</Link>
+                <Link to={"/products/king"} className="link">King</Link>
               </button>
             </div>
           </div>
@@ -49,7 +49,7 @@ const Categories = () => {
             <div className="row">
               <img src={queen13} alt="" />
               <button>
-                <Link to={"/product/1"} className="link">Queen</Link>
+                <Link to={"/products/queen"} className="link">Queen</Link>
               </button>
             </div>
           </div>
@@ -58,7 +58,7 @@ const Categories = () => {
           <div className="row">
             <img src={all05} alt="" />
             <button>
-              <Link to={"/product/1"} className="link">Sale</Link>
+              <Link to={"/products/sale"} className="link">Sale</Link>
             </button>
           </div>
         </div>

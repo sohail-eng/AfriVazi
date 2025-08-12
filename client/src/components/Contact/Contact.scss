@@ -1,35 +1,131 @@
 .contact {
   background-color: teal;
   color: white;
-  padding: 15px;
+  padding: 20px 10px;
   display: flex;
   justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
 
   .wrapper {
-    width: 75%;
+    width: 100%;
+    max-width: 1200px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    gap: 15px;
+    padding: 0 15px;
+    box-sizing: border-box;
+
+    span {
+      font-size: 16px;
+      font-weight: 500;
+      text-align: center;
+      margin-bottom: 5px;
+    }
+
+    .mail {
+      display: flex;
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+    }
 
     input {
-      padding: 10px;
+      flex: 1;
+      padding: 10px 15px;
       border: none;
-      border-radius: 5px 0 0 5px;
-      margin-right: 20px;
+      border-radius: 4px 0 0 4px;
+      font-size: 14px;
+      min-width: 0; // Prevents input from overflowing
+      
+      &::placeholder {
+        color: #999;
+        font-size: 13px;
+      }
     }
 
     button {
-      padding: 10px;
+      padding: 0 20px;
       color: white;
       background-color: #333;
       border: none;
-      border-radius: 0 5px 5px 0;
-      margin-right: 20px;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: background-color 0.2s ease;
+      
+      &:hover {
+        background-color: #555;
+      }
     }
 
-    .icons{
-        display: flex;
-        gap: 10px;
+    .icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 5px;
+      flex-wrap: wrap;
+      justify-content: center;
+      
+      svg {
+        font-size: 24px;
+        cursor: pointer;
+        transition: transform 0.2s ease, color 0.2s ease;
+        
+        &:hover {
+          transform: translateY(-2px);
+          color: #e0e0e0;
+        }
+      }
+    }
+  }
+
+  // Tablet and larger screens
+  @media (min-width: 768px) {
+    padding: 25px 15px;
+    
+    .wrapper {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 20px;
+      
+      span {
+        margin-bottom: 0;
+        font-size: 18px;
+        text-align: left;
+        flex-shrink: 0;
+      }
+      
+      .mail {
+        margin: 0;
+        max-width: 400px;
+      }
+      
+      .icons {
+        margin-top: 0;
+        gap: 20px;
+      }
+    }
+  }
+  
+  // Desktop screens
+  @media (min-width: 1024px) {
+    .wrapper {
+      padding: 0 30px;
+      
+      span {
+        font-size: 20px;
+      }
+      
+      input {
+        padding: 12px 20px;
+        font-size: 15px;
+      }
+      
+      button {
+        padding: 0 25px;
+      }
     }
   }
 }

@@ -1,48 +1,112 @@
 .slider {
   height: calc(100vh - 80px);
-  width: 100vw;
+  max-height: 800px;
+  width: 100%;
   position: relative;
   overflow: hidden;
 
   .container {
     display: flex;
     width: 100%;
+    height: 100%;
     transition: transform 1s ease;
 
     img {
-      min-width: 100vw;
+      min-width: 100%;
+      width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
     }
   }
 
   .icons {
     position: absolute;
     top: 50%;
+    left: 0;
+    right: 0;
     transform: translateY(-50%);
     display: flex;
     justify-content: space-between;
     width: 100%;
-    height: 50px;
+    padding: 0 5%;
+    box-sizing: border-box;
+    pointer-events: none;
 
     .icon {
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
       border: 1px solid #999;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      background-color: white;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 50%;
+      pointer-events: auto;
+      transition: all 0.3s ease;
 
-      &:first-of-type {
-        position: absolute;
-        left: 10px;
+      &:hover {
+        background-color: white;
+        transform: scale(1.1);
       }
 
-      &:last-of-type {
-        position: absolute;
-        right: 10px;
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  // Media Queries
+  @media (max-width: 1024px) {
+    height: 60vh;
+  }
+
+  @media (max-width: 768px) {
+    height: 50vh;
+    
+    .icons {
+      .icon {
+        width: 36px;
+        height: 36px;
+        
+        svg {
+          width: 18px;
+          height: 18px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    height: 40vh;
+    
+    .icons {
+      .icon {
+        width: 32px;
+        height: 32px;
+        
+        svg {
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 360px) {
+    height: 35vh;
+    
+    .icons {
+      .icon {
+        width: 30px;
+        height: 30px;
+        
+        svg {
+          width: 14px;
+          height: 14px;
+        }
       }
     }
   }

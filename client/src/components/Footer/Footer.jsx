@@ -37,7 +37,7 @@ const Footer = () => {
           <span>
             AfriVazi <br /> 
             Spectrum Business Park, <br />
-            No. 73 Baba Dogo Road, Nairobi KE. <br />
+            No. 1234 Baba Dogo Road, Nairobi KE. <br />
             <br />
             Phone: +254 712 345 678 <br />
             Email: support@afrivazi.com <br />
