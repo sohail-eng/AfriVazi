@@ -1,8 +1,29 @@
 # 🛍️ AfriVazi E-commerce Platform
 
+## Table of Contents
+
+1. [Project Overview](#project-overview)
+2. [Features](#-features)
+3. [Project Structure](#-project-structure)
+4. [User Interface](#user-interface)
+   - [Design System](#design-system)
+   - [Core Components](#core-components)
+5. [Component Architecture](#component-architecture)
+   - [Page Components](#page-components)
+   - [State Management](#state-management)
+   - [Routing](#routing)
+6. [Development Practices](#development-practices)
+   - [Code Organization](#code-organization)
+   - [Styling Approach](#styling-approach)
+   - [State Management](#state-management-1)
+   - [Error Handling](#error-handling)
+7. [Installation & Setup](#-installation--setup)
+
+## Project Overview
+
 AfriVazi is a full-stack e-commerce platform for authentic African wear, built with a **Strapi** backend (API) and a **React + TypeScript + Vite** frontend. The project is designed for easy deployment, scalability, and a seamless shopping experience.
 
----
+Backend repo: [AfriVazi Backend](https://github.com/bridgitkanini/AfriVazi/tree/main/api)
 
 ## ✨ Features
 
@@ -87,6 +108,149 @@ AfriVazi/
 ├── .gitignore                 # Git ignore file
 └── README.md                  # Project documentation (this file)
 ```
+
+
+## User Interface
+
+### Design System
+
+- **Color Scheme**:
+  - Primary: `#2879fe` (blue) - Main brand color
+  - Text: `#333` - Main text color
+  - Light Text: `#777` - Secondary text
+  - Border: `#e0e0e0` - Border color
+  - Background: `#f5f5f5` - Light background
+  - Error: `#ff4d4f` - Error/validation
+  - Success: `#52c41a` - Success messages
+
+### Core Components
+
+1. **Navbar**
+   - Responsive navigation with mobile menu
+   - Logo and site navigation links
+   - Shopping cart icon with item counter
+   - Search functionality
+
+2. **Card**
+   - Displays product information
+   - Product image with hover effects
+   - Price and title display
+   - Add to cart button
+
+3. **Cart**
+   - Shopping cart drawer
+   - List of selected products
+   - Quantity adjustment
+   - Total price calculation
+
+4. **Categories**
+   - Category navigation
+   - Responsive category menu
+   - Active state indicators
+
+5. **FeaturedProducts**
+   - Showcase of selected products
+   - Responsive grid layout
+   - Quick view functionality
+
+6. **Footer**
+   - Site navigation links
+   - Contact information
+   - Social media links
+   - Copyright information
+
+7. **Slider**
+   - Image carousel for featured content
+   - Auto-rotation with manual controls
+   - Responsive image display
+
+## Component Architecture
+
+### Page Components
+
+1. **Home Page (`/`)**
+   - Hero slider with featured products
+   - Categories section
+   - Featured products grid
+   - Newsletter signup section
+
+2. **Products Page (`/products`)**
+   - Product listing with filters
+   - Category-based filtering
+   - Search functionality
+   - Pagination support
+
+3. **Product Detail (`/product/:id`)**
+   - Product image gallery
+   - Detailed product information
+   - Add to cart functionality
+   - Related products
+
+4. **About Page (`/about`)**
+   - Company information
+   - Mission and values
+   - Team section
+
+5. **Contact Page (`/contact`)**
+   - Contact information
+   - Contact form with validation
+   - Business hours
+   - Location map
+
+### State Management
+
+1. **Redux Store**
+   - Cart state management
+   - Product state
+   - UI state (modals, loading states)
+
+2. **Local State**
+   - Form inputs
+   - UI interactions
+   - Component-specific state
+
+3. **API Integration**
+   - Axios for HTTP requests
+   - Data fetching and caching
+   - Error handling
+
+### Routing
+
+- React Router for client-side navigation
+- Protected routes (if authentication is implemented)
+- 404 error handling
+- Scroll restoration
+
+## Development Practices
+
+### Code Organization
+
+- **Feature-based Structure**: Components grouped by feature
+- **Shared Components**: Reusable UI elements in shared directory
+- **Type Definitions**: TypeScript interfaces and types
+- **API Services**: Centralized API calls with axios
+
+### Styling Approach
+
+- **Tailwind CSS**: Utility-first styling
+- **CSS Modules**: Component-scoped styles
+- **Responsive Design**: Mobile-first breakpoints
+- **Design Tokens**: Consistent spacing, colors, and typography
+
+### State Management
+
+- **Redux Toolkit**: Global state management
+- **React Context**: For theme and auth state
+- **Local State**: For component-specific state
+- **Redux Persist**: For persisting cart and user preferences
+
+### Error Handling
+
+- **API Errors**: Centralized error handling
+- **Form Validation**: Client-side validation
+- **Error Boundaries**: Graceful error recovery
+- **Logging**: Client-side error logging
+
 
 ## 🛠️ Technologies Used
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import all01 from "./../../assets/image/all01.jpg";
 import accessories13 from "./../../assets/image/accessories13.jpg";
 import all05 from "./../../assets/image/all05.jpg";
@@ -14,7 +14,6 @@ import "./Slider.scss";
 
 const Slider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [transitioning, setTransitioning] = useState(false);
 
   const Data = [
     all01,
@@ -28,21 +27,17 @@ const Slider = () => {
     queen13,
   ];
 
-  const prevSlide = () => {
-    if (currentSlide === 0) {
-      setCurrentSlide(Data.length - 1);
-    } else {
-      setCurrentSlide(currentSlide - 1);
-    }
-  };
+  const prevSlide = useCallback(() => {
+    setCurrentSlide(current => 
+      current === 0 ? Data.length - 1 : current - 1
+    );
+  }, [Data.length]);
 
-  const nextSlide = () => {
-    if (currentSlide === Data.length - 1) {
-      setCurrentSlide(0);
-    } else {
-      setCurrentSlide(currentSlide + 1);
-    }
-  };
+  const nextSlide = useCallback(() => {
+    setCurrentSlide(current => 
+      current === Data.length - 1 ? 0 : current + 1
+    );
+  }, [Data.length]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -50,7 +45,7 @@ const Slider = () => {
     }, 3000); // Change slide every 3 seconds
 
     return () => clearInterval(interval);
-  }, [currentSlide]);
+  }, [nextSlide]);
 
   return (
     <div className="slider">

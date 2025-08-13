@@ -28,12 +28,87 @@
 
   .right {
     flex: 3;
+    position: relative;
 
     .categoryImage {
       width: 100%;
       height: 400px;
       object-fit: cover;
       margin-bottom: 50px;
+    }
+  }
+
+  // Responsive styles for small screens
+  @media (max-width: 768px) {
+    padding: 20px 15px;
+    flex-direction: column;
+
+    .left {
+      position: static;
+      margin-bottom: 20px;
+      width: 100%;
+      order: 2;
+    }
+
+    .right {
+      order: 1;
+      width: 100%;
+      margin-bottom: 20px;
+
+      .categoryImage {
+        height: 250px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  // Extra small devices
+  @media (max-width: 480px) {
+    padding: 15px 10px;
+
+    .right .categoryImage {
+      height: 200px;
+      margin-bottom: 15px;
+    }
+  }
+
+  // Tablet and smaller screens
+  @media (max-width: 1023px) {
+    flex-direction: column;
+    padding: 20px 15px;
+    gap: 20px;
+
+    .left {
+      position: static;
+      width: 100%;
+      max-height: none;
+      flex: 1 0 auto;
+      order: 2;
+      margin-bottom: 20px;
+    }
+
+    .right {
+      order: 1;
+
+      .categoryImage {
+        height: 300px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  // Small mobile devices
+  @media (max-width: 480px) {
+    padding: 15px 10px;
+    gap: 15px;
+
+    .left {
+      padding: 15px;
+    }
+
+    .right .categoryImage {
+      height: 200px;
+      margin-bottom: 15px;
     }
   }
 }
