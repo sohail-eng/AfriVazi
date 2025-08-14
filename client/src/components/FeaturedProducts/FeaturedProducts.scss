@@ -25,10 +25,24 @@
 
   .bottom {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 30px;
-    justify-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    width: 100%;
+    max-width: 100%;
     padding: 0 10px;
+    margin: 0 auto;
+    box-sizing: border-box;
+
+    @media (min-width: 900px) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding: 0 20px;
+    }
+
+    @media (min-width: 1200px) {
+      grid-template-columns: repeat(4, 1fr);
+      max-width: 1400px;
+    }
   }
 
   // Tablet styles (768px and up)
@@ -68,11 +82,6 @@
         flex: 3;
         padding-left: 50px;
       }
-    }
-
-    .bottom {
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 50px;
     }
   }
 }

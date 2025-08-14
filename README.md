@@ -17,7 +17,7 @@
    - [Styling Approach](#styling-approach)
    - [State Management](#state-management-1)
    - [Error Handling](#error-handling)
-7. [Installation & Setup](#-installation--setup)
+7. [Quick Start & Installation](#-quick-start--installation)
 
 ## Project Overview
 
@@ -109,7 +109,6 @@ AfriVazi/
 └── README.md                  # Project documentation (this file)
 ```
 
-
 ## User Interface
 
 ### Design System
@@ -126,34 +125,40 @@ AfriVazi/
 ### Core Components
 
 1. **Navbar**
+
    - Responsive navigation with mobile menu
    - Logo and site navigation links
    - Shopping cart icon with item counter
    - Search functionality
 
 2. **Card**
+
    - Displays product information
    - Product image with hover effects
    - Price and title display
    - Add to cart button
 
 3. **Cart**
+
    - Shopping cart drawer
    - List of selected products
    - Quantity adjustment
    - Total price calculation
 
 4. **Categories**
+
    - Category navigation
    - Responsive category menu
    - Active state indicators
 
 5. **FeaturedProducts**
+
    - Showcase of selected products
    - Responsive grid layout
    - Quick view functionality
 
 6. **Footer**
+
    - Site navigation links
    - Contact information
    - Social media links
@@ -169,24 +174,28 @@ AfriVazi/
 ### Page Components
 
 1. **Home Page (`/`)**
+
    - Hero slider with featured products
    - Categories section
    - Featured products grid
    - Newsletter signup section
 
 2. **Products Page (`/products`)**
+
    - Product listing with filters
    - Category-based filtering
    - Search functionality
    - Pagination support
 
 3. **Product Detail (`/product/:id`)**
+
    - Product image gallery
    - Detailed product information
    - Add to cart functionality
    - Related products
 
 4. **About Page (`/about`)**
+
    - Company information
    - Mission and values
    - Team section
@@ -200,11 +209,13 @@ AfriVazi/
 ### State Management
 
 1. **Redux Store**
+
    - Cart state management
    - Product state
    - UI state (modals, loading states)
 
 2. **Local State**
+
    - Form inputs
    - UI interactions
    - Component-specific state
@@ -251,10 +262,10 @@ AfriVazi/
 - **Error Boundaries**: Graceful error recovery
 - **Logging**: Client-side error logging
 
-
 ## 🛠️ Technologies Used
 
 ### Frontend
+
 - **React 18** - Frontend library
 - **TypeScript** - Type checking
 - **Vite** - Build tool and dev server
@@ -266,6 +277,7 @@ AfriVazi/
 - **Axios** - HTTP client
 
 ### Backend
+
 - **Strapi 5** - Headless CMS
 - **Node.js** - JavaScript runtime
 - **PostgreSQL** - Primary database
@@ -274,19 +286,27 @@ AfriVazi/
 - **JWT** - Authentication
 
 ### Development Tools
+
 - **ESLint** - Code linting
 - **PostCSS** - CSS processing
 - **Git** - Version control
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Quick Start & Installation
 
-### 1. Clone the repository
+### Prerequisites
+
+- Node.js (v18 or later)
+- npm (v8 or later)
+- MySQL Server (v8.0 or later) or PostgreSQL (v12 or later)
+- MySQL Workbench (recommended) or another database management tool
+
+### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/afrivazi.git
-cd afrivazi
+git clone https://github.com/bridgitkanini/AfriVazi.git
+cd AfriVazi
 ```
 
 ### 2. Setup the Backend (API)
@@ -294,108 +314,125 @@ cd afrivazi
 ```bash
 cd api
 npm install
-# Development mode
-npm run develop
-# Production build
-npm run build && npm start
 ```
 
-- Configure environment variables in `api/.env` (see below).
-- See [`api/DEPLOYMENT_GUIDE.md`](api/DEPLOYMENT_GUIDE.md) for deployment instructions.
+#### Database Setup
+
+1. **Create a MySQL Database**
+
+   - Open MySQL Workbench
+   - Connect to your local MySQL server
+   - Create a new database:
+     ```sql
+     CREATE DATABASE strapi_afrivazi;
+     ```
+   - Create a database user (replace with a strong password):
+     ```sql
+     CREATE USER 'afrivazi_user'@'localhost' IDENTIFIED BY 'your_secure_password';
+     GRANT ALL PRIVILEGES ON strapi_afrivazi.* TO 'afrivazi_user'@'localhost';
+     FLUSH PRIVILEGES;
+     ```
+
+2. **Configure Environment Variables**
+   Create a `.env` file in the `api` directory with:
+
+   ```env
+   # Database
+   DATABASE_CLIENT=mysql
+   DATABASE_HOST=127.0.0.1
+   DATABASE_PORT=3306
+   DATABASE_NAME=strapi_afrivazi
+   DATABASE_USERNAME=afrivazi_user
+   DATABASE_PASSWORD=your_secure_password
+
+   # App
+   HOST=0.0.0.0
+   PORT=1337
+   NODE_ENV=development
+
+   # Security
+   JWT_SECRET=your_jwt_secret
+   ADMIN_JWT_SECRET=your_admin_jwt_secret
+   API_TOKEN_SALT=your_api_token_salt
+   ```
+
+3. **Install Dependencies**
+
+   ```bash
+   npm install mysql2 --save
+   ```
+
+4. **Start the Backend**
+
+   ```bash
+   # Development mode
+   npm run develop
+
+   # Or for production
+   # npm run build && npm start
+   ```
+
+   - Admin panel: http://localhost:1337/admin
+   - API: http://localhost:1337/api
 
 ### 3. Setup the Frontend (Client)
 
 ```bash
-cd client
+cd ../client
 pnpm install  # or npm install
-# Development mode
-pnpm dev      # or npm run dev
-# Production build
-pnpm build    # or npm run build
 ```
 
-- Configure environment variables in `client/.env` (see below).
+1. **Configure Environment Variables**
+   Create a `.env` file in the `client` directory:
 
----
+   ```env
+   VITE_API_URL=http://localhost:1337/api
+   VITE_UPLOAD_URL=http://localhost:1337
+   VITE_API_TOKEN=your_strapi_api_token  # Get from Strapi Settings > API Tokens
+   ```
 
-## 🔑 Environment Variables
+2. **Start the Development Server**
 
-### Backend (`api/.env`)
+   ```bash
+   # Development mode
+   pnpm dev  # or npm run dev
 
-| Variable           | Description                          |
-| ------------------ | ------------------------------------ |
-| `DATABASE_CLIENT`  | `sqlite`, `mysql`, or `postgres`     |
-| `DATABASE_URL`     | (Postgres) Full DB connection string |
-| `JWT_SECRET`       | JWT secret for API auth              |
-| `ADMIN_JWT_SECRET` | JWT secret for admin panel           |
-| `API_TOKEN_SALT`   | Salt for API tokens                  |
-| `APP_KEYS`         | App keys (comma-separated or array)  |
-| `STRIPE_KEY`       | Stripe secret key (for orders)       |
-| `CLIENT_URL`       | Frontend URL for payment redirects   |
-| `NODE_ENV`         | `development` or `production`        |
+   # Production build
+   # pnpm build
+   # pnpm preview
+   ```
 
-See `api/config/database.js` and `api/DEPLOYMENT_GUIDE.md` for details.
+   - Frontend: http://localhost:5173
 
-### Frontend (`client/.env`)
+### 4. Initial Setup in Strapi Admin
 
-```env
-VITE_API_URL=https://your-api-url.com/api
-VITE_API_TOKEN=your-strapi-api-token
-VITE_UPLOAD_URL=https://your-api-url.com
-```
+1. Visit http://localhost:1337/admin
+2. Create your admin account
+3. Go to Settings > API Tokens
+4. Create a new API Token with full access
+5. Update the `VITE_API_TOKEN` in your client's `.env` file
 
-- `VITE_API_URL`: Base URL for the Strapi API (should end with `/api`)
-- `VITE_API_TOKEN`: Strapi API token for public data access
-- `VITE_UPLOAD_URL`: Base URL for serving uploaded images/files
+### Troubleshooting
 
----
+- **MySQL Connection Issues**:
 
-## 🛠️ Scripts
+  - Ensure MySQL server is running
+  - Verify database credentials in `.env`
+  - Check database user permissions
+  - Try using `127.0.0.1` instead of `localhost`
 
-### Backend (`api/`)
+- **Port Conflicts**:
 
-- `npm run develop` — Start Strapi in development mode
-- `npm run build` — Build the admin panel
-- `npm start` — Start in production mode
-- `npm run deploy` — Deploy (see deployment guide)
+  - Strapi: 1337 (API) and 1338 (Admin)
+  - Vite: 5173 (Frontend)
+  - Update ports in respective `.env` files if needed
 
-### Frontend (`client/`)
+- **API Token Issues**:
+  - Regenerate the token in Strapi admin
+  - Ensure the token has correct permissions
+  - Restart the frontend after updating the token
 
-- `pnpm dev` — Start development server with hot reload
-- `pnpm build` — Build for production
-- `pnpm preview` — Preview the production build
-- `pnpm lint` — Run ESLint on the codebase
-
----
-
-## 🧩 Main Features & Pages
-
-### Backend
-
-- **Admin Panel**: `/admin` (after running the API)
-- **REST API**: `/api/products`, `/api/categories`, `/api/sub-categories`, `/api/orders`
-- **Order Payment**: Stripe integration for secure checkout
-
-### Frontend
-
-- **Home** (`/`): Hero slider, featured/trending products, categories, contact
-- **Products** (`/products/:id`): Product list with filters and sorting
-- **Product** (`/product/:id`): Product details, add to cart
-- **Cart**: Accessible from Navbar, shows cart items and checkout button
-
----
-
-## 🛒 Cart & Checkout
-
-- Cart state is managed with Redux Toolkit and persisted with `redux-persist`.
-- Checkout uses Stripe. Update the Stripe public key in `client/src/components/Cart/Cart.jsx` for your own Stripe account.
-
----
-
-## 🏗️ Deployment
-
-- **Backend**: See [`api/DEPLOYMENT_GUIDE.md`](api/DEPLOYMENT_GUIDE.md) for Render/PostgreSQL setup.
-- **Frontend**: Deploy to Vercel, Netlify, or any static hosting. Update `VITE_API_URL` and `VITE_UPLOAD_URL` in your frontend `.env`.
+For deployment instructions, see [Deployment Guide](api/DEPLOYMENT_GUIDE.md).
 
 ---
 
